@@ -1,4 +1,4 @@
-ROS + CamOdoCal Hand Eye Calibration
+ROS + CamOdoCal Hand Eye Calibration for LiDAR - INS System
 ====================================
 
 ## Useage
