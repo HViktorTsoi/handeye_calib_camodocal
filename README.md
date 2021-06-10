@@ -2,7 +2,7 @@ ROS + CamOdoCal Hand Eye Calibration for LiDAR - INS System
 ====================================
 
 ## Useage
-### Topics
+### Subscribed Topics
 1. /rslidar_points: sensor_msgs/PointCloud2, 激光雷达点云
 
 2. /gnss_odom: nav_msgs/Odometry, 组合惯导给出的定位(UTM坐标系)
