@@ -1,0 +1,17 @@
+<launch>
+
+    <!--  LiDAR Odometry-->
+    <!--    注意,在playbag的时候,速度尽量低,比如0.5倍率-->
+    <node pkg="rs_to_velodyne" type="rs_to_velodyne"    name="rs_to_velodyne"    output="screen" args="XYZIRT XYZIR"/>
+    <include file="$(find lego_loam)/launch/run.launch"/>
+    <node pkg="handeye_calib_camodocal" type="lego_loam_transform_fusion.py" name="lego_loam_transform_fusion"
+          output="screen"/>
+
+
+    <node pkg="handeye_calib_camodocal" type="odom_synchronizer.py" name="odom_synchronizer" output="screen">
+        <param name="filename" value="$(find handeye_calib_camodocal)/example/TransformPairsInput.yml"/>
+        <!--               value="/home/hvt/Code/catkin_ws/src/handeye_calib_camodocal/example/HYY_TransformPairsInput.yml"/>-->
+    </node>
+
+
+</launch>

@@ -1,6 +1,30 @@
 ROS + CamOdoCal Hand Eye Calibration
 ====================================
 
+## Useage
+### Topics
+1. /rslidar_points: sensor_msgs/PointCloud2, 激光雷达点云
+
+2. /gnss_odom: nav_msgs/Odometry, 组合惯导给出的定位(UTM坐标系)
+
+### Calibration
+1. 首先启动数据转换
+```shell
+roslaunch handeye_calib_camodocal data_preparation.launch
+``` 
+
+2. 播放bag, 注意在播放的时候, 速度尽量低,比如0.5倍率
+```shell
+rosbag play xxxx_lidar_ins.bag --clock --rate 0.5
+``` 
+
+3. Ctrl+C关闭以上节点之后, 启动外参标定
+```shell
+roslaunch handeye_calib_camodocal calibration.launch
+```
+
+====================================
+
 This is a ROS node integrating the Hand Eye Calibration implemented in [CamOdoCal](https://github.com/hengli/camodocal). See this [stack exchange question explaining how Hand Eye Calibration works](http://robotics.stackexchange.com/questions/7163/hand-eye-calibration).
 
 Example uses include determining exact transforms with both positions and orientations of a:
